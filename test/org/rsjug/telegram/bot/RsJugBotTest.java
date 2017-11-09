@@ -39,7 +39,12 @@ public class RsJugBotTest {
 	public void retornaOTwitterQuandoTemTwitterNoTexto() {
 		assertTrue(rsbot.execute("rssgss twitter sdsdsds").startsWith(RsJugBot.PARECEQUE_MESSAGE+ RsJugBot.COMMAND_TWITTER));
 	}
-	
+
+	@Test
+	public void retornaOEMailQuandoTemEmailNoTexto() {
+		assertTrue(rsbot.execute("rssgss email sdsdsds").startsWith(RsJugBot.PARECEQUE_MESSAGE+ RsJugBot.COMMAND_EMAIL));
+	}
+
 	@Test
 	public void retornaOFbQuandoEscreve_FB() {
 		assertEquals(RsJugBot.RSJUG_FB, rsbot.execute(RsJugBot.COMMAND_FB));

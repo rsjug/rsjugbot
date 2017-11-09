@@ -10,6 +10,7 @@ public class BotInfo {
 	private InputStream input = null;
 	private String botUsername;
 	private String botToken;
+	private String botFatherId;
 
 	public BotInfo() {
 		prop = new Properties();
@@ -24,6 +25,7 @@ public class BotInfo {
 			// get the property value and print it out
 			setBotUsername(prop.getProperty("botUsername"));
 			setBotToken(prop.getProperty("botToken"));
+			setBotFatherId(prop.getProperty("botFatherId"));
 
 		} catch (IOException ex) {
 			ex.printStackTrace();
@@ -53,6 +55,14 @@ public class BotInfo {
 
 	public void setBotToken(String botToken) {
 		this.botToken = botToken;
+	}
+
+	public String getBotFatherId() {
+		return botFatherId;
+	}
+
+	public void setBotFatherId(String botFatherId) {
+		this.botFatherId = botFatherId;
 	}
 
 }

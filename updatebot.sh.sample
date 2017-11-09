@@ -1,0 +1,7 @@
+kill $(ps aux | grep 'rsjugbot' | awk '{print $2}')
+echo ".... no more rsjugbot processes"
+curl -L -o rsjugbot-prod.jar https://yourdownload.link
+echo ".... downloaded latest bot"
+now="$(date +'%d%m%Y')"
+nohup java -jar rsjugbot-prod.jar > log-requests-$now.txt &
+echo ".... rsjugbot-prod running"
