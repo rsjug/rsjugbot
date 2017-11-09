@@ -9,32 +9,47 @@ import org.rsjug.telegram.bot.RsJugBot;
 
 public class RsJugBotTest {
 
-	private static final String RSJUG_WEBSITE = "http://www.rsjug.org";
-	private RsJugBot rsbot = new RsJugBot();
+	private RsJugBot rsbot;
 	
 	@Before
 	public void setUp() throws Exception {
+		rsbot = new RsJugBot();
 	}
 
 	@After
 	public void tearDown() throws Exception {
-	}
-
-	@Test
-	public void deveRetornarSiteRSJUG() {
-		assertEquals(RSJUG_WEBSITE, rsbot.getWebSite());
+		rsbot = null;
 	}
 	
 	@Test
 	public void retornaOSiteQuandoEscreve_SITE() {
-		assertEquals(RSJUG_WEBSITE, rsbot.execute(RsJugBot.COMMAND_SITE));
-		assertEquals(RSJUG_WEBSITE, rsbot.execute("sIte"));
-		assertEquals(RSJUG_WEBSITE, rsbot.execute("  site  "));
+		assertEquals(RsJugBot.RSJUG_WEBSITE, rsbot.execute(RsJugBot.COMMAND_SITE));
+		assertEquals(RsJugBot.RSJUG_WEBSITE, rsbot.execute("sIte"));
+		assertEquals(RsJugBot.RSJUG_WEBSITE, rsbot.execute("  site  "));
+	}
+
+	@Test
+	public void retornaOTwitterQuandoEscreve_TWITTER() {
+		assertEquals(RsJugBot.RSJUG_TWITTER, rsbot.execute(RsJugBot.COMMAND_TWITTER));
+		assertEquals(RsJugBot.RSJUG_TWITTER, rsbot.execute("TWiTteR"));
+		assertEquals(RsJugBot.RSJUG_TWITTER, rsbot.execute("  twitteR  "));
+	}
+
+	@Test
+	public void retornaOTwitterQuandoTemTwitterNoTexto() {
+		assertTrue(rsbot.execute("rssgss twitter sdsdsds").startsWith(RsJugBot.PARECEQUE_MESSAGE+ RsJugBot.COMMAND_TWITTER));
 	}
 	
 	@Test
-	public void retornaStringVaziaCaseNaoExistaOComando() {
-		assertNull(rsbot.execute("outrocomando"));
+	public void retornaOFbQuandoEscreve_FB() {
+		assertEquals(RsJugBot.RSJUG_FB, rsbot.execute(RsJugBot.COMMAND_FB));
+		assertEquals(RsJugBot.RSJUG_FB, rsbot.execute("fB"));
+		assertEquals(RsJugBot.RSJUG_FB, rsbot.execute("  Fb  "));
+	}
+
+	@Test
+	public void retornaNullCasoNaoExistaOComando() {
+		assertEquals(RsJugBot.NO_COMMAND_AVAILABLE+RsJugBot.START_MESSAGE,rsbot.execute("outrocomando"));
 	}
 
 }

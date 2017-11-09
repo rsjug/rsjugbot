@@ -1,5 +1,7 @@
 package org.rsjug.telegram.bot;
 
+import java.util.Calendar;
+
 import org.telegram.telegrambots.TelegramBotsApi;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Message;
@@ -26,9 +28,8 @@ public class RsJugBotRunner extends TelegramLongPollingBot{
 	
 	@Override
 	public void onUpdateReceived(Update update) {
-		 //check if the update has a message
-		
-		//update.getMessage().i
+		StringBuilder sb = new StringBuilder(); 
+		//check if the update has a message
 	    if(update.hasMessage()){
 	        Message message = update.getMessage();
 
@@ -36,20 +37,24 @@ public class RsJugBotRunner extends TelegramLongPollingBot{
 	        if(message.hasText()){
 	            //create an object that contains the information to send back the message
 	            SendMessage sendMessageRequest = new SendMessage();
-	            
-	            System.out.println(message.getFrom().getUserName()+ ";"+ message.getFrom().getFirstName()+ ";"+ message.getFrom().getLastName()+ ";"+ message.getChatId().toString() + ";" + message.getText());
+	            //who should get from the message the sender that sent it.
+	            sendMessageRequest.setChatId(message.getChatId().toString()); 
+
+	            log(message.getFrom().getUserName()+ ";"+ message.getFrom().getFirstName()+ ";"+ message.getFrom().getLastName()+ ";"+ message.getChatId().toString() + ";" + message.getText());
 	            if(message.getContact() != null)
-	              System.out.println(message.getContact().getPhoneNumber());
-	            sendMessageRequest.setChatId(message.getChatId().toString()); //who should get from the message the sender that sent it.
-	            
+	              log(message.getContact().getPhoneNumber());
+
 	            RsJugBot conteudo = new RsJugBot();
-	            
-	            sendMessageRequest.setText(conteudo.execute(message.getText()));
+	            if(null!= message.getFrom().getUserName()) 
+	            	sb.append("@").append(message.getFrom().getUserName()).append(":\n");
+	            sb.append(conteudo.execute(message.getText()));
+	            sendMessageRequest.setText(sb.toString());
 	            
 	            try {
-	                sendMessage(sendMessageRequest); //at the end, so some magic and send the message ;)
+	            	//at the end, so some magic and send the message ;)
+	                sendMessage(sendMessageRequest); 
 	            } catch (TelegramApiException e) {
-	            //do some error handling
+	              log(e.toString());
 	            }
 	        }
 	    }
@@ -64,6 +69,13 @@ public class RsJugBotRunner extends TelegramLongPollingBot{
 	@Override
 	public String getBotToken() {
 		return botInfo.getBotToken();
+	}
+	
+	private void log(String text)
+	{
+		System.out.print(Calendar.getInstance().getTime());
+		System.out.print(";");
+		System.out.println(text);
 	}
 
 
