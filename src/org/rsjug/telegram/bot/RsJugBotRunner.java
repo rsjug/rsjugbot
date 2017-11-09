@@ -16,6 +16,17 @@ public class RsJugBotRunner extends TelegramLongPollingBot{
 	public static final String LOGTAG = "RSJUGBOTHANDLERS";
 	public BotInfo botInfo = new BotInfo();
 
+	public RsJugBotRunner() {
+		try {
+			if(botInfo.getBotFatherId() != null)
+		      this.sendMessage(new SendMessage().setChatId(botInfo.getBotFatherId()).setText("Fizeram deploy do RSJUGBOT. Se liga."));			
+		} catch (TelegramApiException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+
 	
 	public static void main(String[] args) {
 	    TelegramBotsApi telegramBotsApi = new TelegramBotsApi();

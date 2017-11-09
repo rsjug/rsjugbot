@@ -8,15 +8,17 @@ public class RsJugBot {
 	public static final String COMMAND_FB = "fb";
 	public static final String COMMAND_TWITTER = "twitter";
 	public static final String COMMAND_TDC = "tdc";
+	public static final String COMMAND_EMAIL = "email";
 	
 	//Defaults
 	public static final String RSJUG_WEBSITE = "http://www.rsjug.org";
 	public static final String RSJUG_TWITTER = "http://twitter.com/rsjug";
 	public static final String RSJUG_FB      = "http://fb.com/groups/rsjug";
 	public static final String RSJUG_TDC     = "http://www.thedevelopersconference.com.br/tdc/2017/portoalegre/trilha-java";
+	private static final String RSJUG_EMAIL  = "https://groups.google.com/group/rsjug";
 	
 
-	public static final String START_MESSAGE = "Opções para teste: \n - site \n - fb \n - twitter \n - tdc";
+	public static final String START_MESSAGE = "Opções para teste: \n - site \n - fb \n - twitter \n - tdc \n - email";
 	public static final String NO_COMMAND_AVAILABLE = "Comando não reconhecido. \nTem alguma sugestão?\n";
 
 	public String execute(String cmd) {
@@ -45,7 +47,16 @@ public class RsJugBot {
 			return PARECEQUE_MESSAGE + COMMAND_TWITTER + " " + getTwitter();   
 		}
 
+		if (cmd.contains(COMMAND_EMAIL)) {
+			if(cmd.equals(COMMAND_EMAIL)) return getTwitter();
+			return PARECEQUE_MESSAGE + COMMAND_EMAIL + " " + getEmail();   
+		}
+
 		return NO_COMMAND_AVAILABLE+START_MESSAGE;
+	}
+
+	private String getEmail() {
+		return RSJUG_EMAIL;
 	}
 
 	public String getTwitter() {
