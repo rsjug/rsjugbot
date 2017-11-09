@@ -4,7 +4,7 @@
     <!--ANT 1.7 is required                                        -->
     <!--define folder properties-->
     <property name="dir.buildfile" value="."/>
-    <property name="dir.workspace" value="/Users/dwildt/Code/workspace-pulsar"/>
+    <!--property name="dir.workspace" value="setup workspacedir..."/-->
     <property name="dir.jarfile" value="${dir.buildfile}/out"/>
     <target name="create_run_jar">
         <jar destfile="${dir.jarfile}/rsjugbot-prod.jar" filesetmanifest="mergewithoutmain">

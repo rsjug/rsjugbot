@@ -15,7 +15,7 @@ public class RsJugBot {
 	public static final String RSJUG_TWITTER = "http://twitter.com/rsjug";
 	public static final String RSJUG_FB      = "http://fb.com/groups/rsjug";
 	public static final String RSJUG_TDC     = "http://www.thedevelopersconference.com.br/tdc/2017/portoalegre/trilha-java";
-	private static final String RSJUG_EMAIL  = "https://groups.google.com/group/rsjug";
+	public static final String RSJUG_EMAIL  = "https://groups.google.com/group/rsjug";
 	
 
 	public static final String START_MESSAGE = "Opções para teste: \n - site \n - fb \n - twitter \n - tdc \n - email";
@@ -48,7 +48,7 @@ public class RsJugBot {
 		}
 
 		if (cmd.contains(COMMAND_EMAIL)) {
-			if(cmd.equals(COMMAND_EMAIL)) return getTwitter();
+			if(cmd.equals(COMMAND_EMAIL)) return getEmail();
 			return PARECEQUE_MESSAGE + COMMAND_EMAIL + " " + getEmail();   
 		}
 
