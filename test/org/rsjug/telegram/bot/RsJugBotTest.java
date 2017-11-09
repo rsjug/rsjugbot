@@ -43,6 +43,8 @@ public class RsJugBotTest {
 	@Test
 	public void retornaOEMailQuandoTemEmailNoTexto() {
 		assertTrue(rsbot.execute("rssgss email sdsdsds").startsWith(RsJugBot.PARECEQUE_MESSAGE+ RsJugBot.COMMAND_EMAIL));
+		assertEquals(RsJugBot.RSJUG_EMAIL, rsbot.execute("email"));
+
 	}
 
 	@Test
