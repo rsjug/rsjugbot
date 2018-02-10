@@ -52,7 +52,16 @@ public class RsJugBot {
 			return PARECEQUE_MESSAGE + COMMAND_EMAIL + " " + getEmail();   
 		}
 
+		String qnaReply = callQnaMaker(cmd);
+		
+		if(qnaReply!=null) return qnaReply;
+		
 		return NO_COMMAND_AVAILABLE+START_MESSAGE;
+	}
+
+	private String callQnaMaker(String cmd) {
+		QnAProxy qnaProxy = new QnAProxy();
+		return qnaProxy.execute(cmd);
 	}
 
 	private String getEmail() {

@@ -11,6 +11,8 @@ public class BotInfo {
 	private String botUsername;
 	private String botToken;
 	private String botFatherId;
+	private String botQnASubscription;
+	private String botQnAKnowledgebaseId;
 
 	public BotInfo() {
 		prop = new Properties();
@@ -26,6 +28,8 @@ public class BotInfo {
 			setBotUsername(prop.getProperty("botUsername"));
 			setBotToken(prop.getProperty("botToken"));
 			setBotFatherId(prop.getProperty("botFatherId"));
+			setBotQnASubscription(prop.getProperty("botQnASubscription"));
+			setBotQnAKnowledgebaseId(prop.getProperty("botQnAKnowledgebaseId"));
 
 		} catch (IOException ex) {
 			ex.printStackTrace();
@@ -63,6 +67,22 @@ public class BotInfo {
 
 	public void setBotFatherId(String botFatherId) {
 		this.botFatherId = botFatherId;
+	}
+
+	public String getBotQnASubscription() {
+		return botQnASubscription;
+	}
+
+	public void setBotQnASubscription(String botQnASubscription) {
+		this.botQnASubscription = botQnASubscription;
+	}
+
+	public String getBotQnAKnowledgebaseId() {
+		return botQnAKnowledgebaseId;
+	}
+
+	public void setBotQnAKnowledgebaseId(String botQnAKnowledgebaseId) {
+		this.botQnAKnowledgebaseId = botQnAKnowledgebaseId;
 	}
 
 }

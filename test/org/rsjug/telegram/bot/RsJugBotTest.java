@@ -55,6 +55,12 @@ public class RsJugBotTest {
 	}
 
 	@Test
+	public void retornaEJBQuandoPerguntaSobreEJB() {
+		assertTrue(rsbot.execute("rssgss ejb sdsdsds").startsWith("Enterprise Java Beans"));
+	}
+	
+	
+	@Test
 	public void retornaNullCasoNaoExistaOComando() {
 		assertEquals(RsJugBot.NO_COMMAND_AVAILABLE+RsJugBot.START_MESSAGE,rsbot.execute("outrocomando"));
 	}
