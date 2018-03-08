@@ -46,10 +46,10 @@ public class QnAProxy {
 			if (entity != null) {
 				String jsonResponse = EntityUtils.toString(entity);
 				JSONObject jsonObject = new JSONObject(jsonResponse);
-				System.out.println(jsonResponse);
+				//System.out.println(jsonResponse); //TODO cleanup code
 				String cmdResponse = jsonObject.getJSONArray("answers").getJSONObject(0).getString("answer");
 				if(cmdResponse != null && cmdResponse.startsWith("No good match found")) return null;
-				if(cmdResponse != null) {
+				if(cmdResponse != null) { //TODO achar algo não deprecated
 					return StringEscapeUtils.unescapeHtml4(cmdResponse);
 				}
 			}

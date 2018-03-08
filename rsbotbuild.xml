@@ -16,6 +16,8 @@
             <zipfileset excludes="META-INF/*.SF" src="/Applications/Eclipse.app/Contents/Eclipse/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="/Applications/Eclipse.app/Contents/Eclipse/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/telegrambots-2.4.0-jar-with-dependencies.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lib/commons-lang3-3.7.jar"/>
+        	
         </jar>
     </target>
 </project>
