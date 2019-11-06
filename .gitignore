@@ -1,6 +1,9 @@
 # Mac File
 .DS_Store
 
+# VS CODE
+.vscode
+
 # Java binaries
 *.class
 
